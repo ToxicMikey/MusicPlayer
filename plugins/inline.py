@@ -30,7 +30,7 @@ buttons = [
 #    [
 #        InlineKeyboardButton('⚡️Make Own Bot', url='https://heroku.com/deploy?template=https://github.com/subinps/MusicPlayer'),
 #        InlineKeyboardButton('🧩 Source Code', url='https://github.com/subinps/MusicPlayer'),
-    ],
+ #   ],
     [
         InlineKeyboardButton('🎧Play Music', url=f'https://t.me/{USERNAME}'),
         InlineKeyboardButton('👨🏼‍🦯 Help', callback_data='help')       
