@@ -161,7 +161,7 @@ bot.send(
                 description="Resume the paused song"
             ),
             types.BotCommand(
-                command="mute",
+                command="off",
                 description="Mute in VC"
             ),
             types.BotCommand(
@@ -169,7 +169,7 @@ bot.send(
                 description="Set volume between 0-200"
             ),
             types.BotCommand(
-                command="unmute",
+                command="on",
                 description="Unmute in VC"
             ),
             types.BotCommand(
