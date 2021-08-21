@@ -26,21 +26,20 @@ from config import Config
 U=USERNAME
 CHAT=Config.CHAT
 msg=Config.msg
-HOME_TEXT = "<b>Helo, [{}](tg://user?id={})\n\nIam MusicPlayer 2.0 which plays music in Channels and Groups 24*7.\n\nI can even Stream Youtube Live in Your Voicechat.\n\nDeploy Your Own bot from source code below.\n\nHit /help to know about available commands.</b>"
+HOME_TEXT = "<b>Helo, [{}](tg://user?id={})\n\nIam MusicPlayer 2.0 which plays music in Channels and Groups 24*7</b>"
 HELP = """
 
-<b>Add the bot and User account in your Group with admin rights.
+<b>Thêm bot và tài khoản Người dùng trong Nhóm của bạn với quyền quản trị.
 
-Start a VoiceChat.
+Bắt đầu trò chuyện thoại.
 
-Use /play <song name> or use /play as a reply to an audio file or youtube link.
+Sử dụng /play <song name> hoặc dùng /play dưới dạng phản hồi cho tệp âm thanh hoặc liên kết youtube.
 
-You can also use /splay <song name> to play a song from Jio Saavn or /cplay <channel username or channel id> to play music from a telegram channel.</b>
+/cplay <channel username or channel id> to play music from a telegram channel.</b>
 
 **Common Commands**:
 
-**/play**  Reply to an audio file or YouTube link to play it or use /play <song name>.
-**/splay** Play music from Jio Saavn, Use /splay <song name>
+**/play** Trả lời tệp âm thanh hoặc liên kết YouTube để phát hoặc sử dụng /play <song name>.
 **/player**  Show current playing song.
 **/help** Show help for commands
 **/playlist** Shows the playlist.
@@ -61,8 +60,8 @@ You can also use /splay <song name> to play a song from Jio Saavn or /cplay <cha
 **/pause** Pause playing.
 **/resume** Resume playing.
 **/volume** Change volume(0-200).
-**/mute**  Mute in VC.
-**/unmute**  Unmute in VC.
+**/off**  Mute in VC.
+**/on**  Unmute in VC.
 **/restart**  Update and restarts the Bot.
 """
 
@@ -72,13 +71,12 @@ You can also use /splay <song name> to play a song from Jio Saavn or /cplay <cha
 @Client.on_message(filters.command(['start', f'start@{U}']))
 async def start(client, message):
     buttons = [
-        [
-        InlineKeyboardButton('⚙️ Update Channel', url='https://t.me/subin_works'),
-        InlineKeyboardButton('🤖 Other Bots', url='https://t.me/subin_works/122'),
-    ],
+#        [
+#        InlineKeyboardButton('⚙️ Update Channel', url='https://t.me/subin_works'),
+#        InlineKeyboardButton('🤖 Other Bots', url='https://t.me/subin_works/122'),
+#    ],
     [
-        InlineKeyboardButton('👨🏼‍💻 Developer', url='https://t.me/subinps'),
-        InlineKeyboardButton('🧩 Source', url='https://github.com/subinps/MusicPlayer'),
+        InlineKeyboardButton('👨🏼‍💻 Admin', url='https://t.me/owohub'),
     ],
     [
         InlineKeyboardButton('👨🏼‍🦯 Help', callback_data='help'),
@@ -95,13 +93,13 @@ async def start(client, message):
 @Client.on_message(filters.command(["help", f"help@{U}"]))
 async def show_help(client, message):
     buttons = [
+ #       [
+ #           InlineKeyboardButton('⚙️ Update Channel', url='https://t.me/subin_works'),
+  #          InlineKeyboardButton('🤖 Other Bots', url='https://t.me/subin_works/122'),
+ #       ],
         [
-            InlineKeyboardButton('⚙️ Update Channel', url='https://t.me/subin_works'),
-            InlineKeyboardButton('🤖 Other Bots', url='https://t.me/subin_works/122'),
-        ],
-        [
-            InlineKeyboardButton('👨🏼‍💻 Developer', url='https://t.me/subinps'),
-            InlineKeyboardButton('🧩 Source', url='https://github.com/subinps/MusicPlayer'),
+ #           InlineKeyboardButton('👨🏼‍💻 Developer', url='https://t.me/subinps'),
+          InlineKeyboardButton('👨🏼‍💻 Admin', url='https://t.me/owohub'),
         ]
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
