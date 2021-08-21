@@ -34,7 +34,7 @@ Start a VoiceChat
 
 Use /play <song name> or use /play as a reply to an audio file or youtube link.
 
-You can also use /splay <song name> to play a song from JioSaavn or /cplay <channel username or channel id> to play music from a telegram channel.</b>
+/cplay <channel username or channel id> to play music from a telegram channel.</b>
 
 **Common Commands**:
 
@@ -60,8 +60,8 @@ You can also use /splay <song name> to play a song from JioSaavn or /cplay <chan
 **/pause** Pause playing.
 **/resume** Resume playing.
 **/volume** Change volume(0-200).
-**/mute**  Mute in VC.
-**/unmute**  Unmute in VC.
+**/off**  Mute in VC.
+**/on**  Unmute in VC.
 **/restart** Update and restarts the Bot.
 """
 
@@ -72,7 +72,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     admins = await mp.get_admins(Config.CHAT)
     if query.from_user.id not in admins and query.data != "help":
         await query.answer(
-            "😒 Played Joji.mp3",
+            "😒 Player Music 737",
             show_alert=True
             )
         return
@@ -84,18 +84,18 @@ async def cb_handler(client: Client, query: CallbackQuery):
             return
         group_call.restart_playout()
         if not playlist:
-            pl = f"{emoji.NO_ENTRY} Empty Playlist"
+            pl = f"{emoji.NO_ENTRY} Danh sách phát trống"
         else:
             if len(playlist)>=25:
                 tplaylist=playlist[:25]
                 pl=f"Listing first 25 songs of total {len(playlist)} songs.\n"
                 pl += f"{emoji.PLAY_BUTTON} **Playlist**:\n" + "\n".join([
-                    f"**{i}**. **🎸{x[1]}**\n   👤**Requested by:** {x[4]}"
+                    f"**{i}**. **🎸{x[1]}**\n   👤**by:** {x[4]}"
                     for i, x in enumerate(tplaylist)
                     ])
             else:
                 pl = f"{emoji.PLAY_BUTTON} **Playlist**:\n" + "\n".join([
-                    f"**{i}**. **🎸{x[1]}**\n   👤**Requested by:** {x[4]}\n"
+                    f"**{i}**. **🎸{x[1]}**\n   👤**by:** {x[4]}\n"
                     for i, x in enumerate(playlist)
                 ])
         await query.edit_message_text(
@@ -120,14 +120,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
             mp.group_call.pause_playout()
             if len(playlist)>=25:
                 tplaylist=playlist[:25]
-                pl=f"Listing first 25 songs of total {len(playlist)} songs.\n"
+                pl=f"Liệt kê tổng số 25 bài hát đầu tiên {len(playlist)} songs.\n"
                 pl += f"{emoji.PLAY_BUTTON} **Playlist**:\n" + "\n".join([
-                    f"**{i}**. **🎸{x[1]}**\n   👤**Requested by:** {x[4]}"
+                    f"**{i}**. **🎸{x[1]}**\n   👤**by:** {x[4]}"
                     for i, x in enumerate(tplaylist)
                     ])
             else:
                 pl = f"{emoji.PLAY_BUTTON} **Playlist**:\n" + "\n".join([
-                    f"**{i}**. **🎸{x[1]}**\n   👤**Requested by:** {x[4]}\n"
+                    f"**{i}**. **🎸{x[1]}**\n   👤**by:** {x[4]}\n"
                     for i, x in enumerate(playlist)
                 ])
         await query.edit_message_text(f"{emoji.PLAY_OR_PAUSE_BUTTON} Paused\n\n{pl},",
@@ -152,9 +152,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             mp.group_call.resume_playout()
             if len(playlist)>=25:
                 tplaylist=playlist[:25]
-                pl=f"Listing first 25 songs of total {len(playlist)} songs.\n"
+                pl=f"Liệt kê tổng số 25 bài hát đầu tiên {len(playlist)} songs.\n"
                 pl += f"{emoji.PLAY_BUTTON} **Playlist**:\n" + "\n".join([
-                    f"**{i}**. **🎸{x[1]}**\n   👤**Requested by:** {x[4]}"
+                    f"**{i}**. **🎸{x[1]}**\n   👤**by:** {x[4]}"
                     for i, x in enumerate(tplaylist)
                     ])
             else:
@@ -185,12 +185,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 tplaylist=playlist[:25]
                 pl=f"Listing first 25 songs of total {len(playlist)} songs.\n"
                 pl += f"{emoji.PLAY_BUTTON} **Playlist**:\n" + "\n".join([
-                    f"**{i}**. **🎸{x[1]}**\n   👤**Requested by:** {x[4]}"
+                    f"**{i}**. **🎸{x[1]}**\n   👤**by:** {x[4]}"
                     for i, x in enumerate(tplaylist)
                     ])
             else:
                 pl = f"{emoji.PLAY_BUTTON} **Playlist**:\n" + "\n".join([
-                    f"**{i}**. **🎸{x[1]}**\n   👤**Requested by:** {x[4]}\n"
+                    f"**{i}**. **🎸{x[1]}**\n   👤**by:** {x[4]}\n"
                     for i, x in enumerate(playlist)
                 ])
         try:
@@ -211,13 +211,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
             pass
     elif query.data=="help":
         buttons = [
+        #    [
+          #      InlineKeyboardButton('⚙️ Update Channel', url='https://t.me/subin_works'),
+          #      InlineKeyboardButton('🤖 Other Bots', url='https://t.me/subin_works/122'),
+         #   ],
             [
-                InlineKeyboardButton('⚙️ Update Channel', url='https://t.me/subin_works'),
-                InlineKeyboardButton('🤖 Other Bots', url='https://t.me/subin_works/122'),
-            ],
-            [
-                InlineKeyboardButton('👨🏼‍💻 Developer', url='https://t.me/subinps'),
-                InlineKeyboardButton('🧩 Source', url='https://github.com/subinps/MusicPlayer'),
+                InlineKeyboardButton('👨🏼‍💻 Developer', url='https://t.me/ryostar'),
+        #        InlineKeyboardButton('🧩 Source', url='https://github.com/subinps/MusicPlayer'),
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
